@@ -49,30 +49,6 @@ def gen_matrix(x, y, match_score=3, gap_cost=2):
 
 	#print_matrix(a,x,y)
 	return(a)
-
-def sequence(a, x, y):
-	highest = 0
-
-	print()
-	print("Sequence: ")
-	for i in range(len(x), 1, -1):
-		for j in range(len(y), 1, -1):
-			if(a[i][j] > highest):
-				highest = a[i][j]
-
-	for i in range(len(x), 1, -1):
-
-		for j in range(len(y), 1, -1):
-			if(highest == 0):
-				print(0, end='\n')
-				break
-			if(a[i][j]==highest):
-				print(a[i][j], end=' ')
-				if(a[i-1][j] > highest):
-					highest = a[i-1][j]
-				else:
-					highest = a[i-1][j-1]
-
 	
 x = "GGTTGACTA"	
 y = "TGTTACGG"
@@ -81,7 +57,6 @@ a=gen_matrix(x,y)
 
 print_matrix1(a,x,y)
 
-sequence(a, x, y)
 
 
 
