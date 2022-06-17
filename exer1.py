@@ -49,6 +49,43 @@ def gen_matrix(x, y, match_score=3, gap_cost=2):
 
 	#print_matrix(a,x,y)
 	return(a)
+
+def check_pair(a, x, y):
+	top = ""
+	mid = ""
+	bot = ""
+	score = 3
+	row = 2
+	check = True
+
+	for i in range(2,len(y)):
+		for j in range(i-1,i+2):
+			# print(i, j, a[i][j])
+			if(a[i][j] == score):
+				top = top + y[j-1] + " "
+				mid = mid + "| "
+				bot = bot + x[row-1] + " "
+				row = row + 1
+				score = score + 3
+				check = False
+		if(check):
+			score = score - 3 - 2
+			for k in range(i-1, i+2):
+				if(a[i][k] == score):
+					top = top + "- "
+					mid = mid + "  "
+					bot = bot + x[k] + " "
+					score = score + 3
+					row = row + 1
+					check = False
+		check = True
+
+	print()
+	print(top)
+	print(mid)
+	print(bot)
+
+			
 	
 x = "GGTTGACTA"	
 y = "TGTTACGG"
@@ -56,6 +93,9 @@ y = "TGTTACGG"
 a=gen_matrix(x,y)
 
 print_matrix1(a,x,y)
+check_pair(a,x,y)
+
+
 
 
 
